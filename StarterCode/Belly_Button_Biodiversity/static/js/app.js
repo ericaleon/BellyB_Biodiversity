@@ -5,15 +5,20 @@ function buildMetadata(sample) {
   // Use `d3.json` to fetch the metadata for a sample
   var URL = "/metadata/<sample>";
   d3.json(URL).then(function(data) {
-    
-  });
+    console.log(data);
+    var meta = data;
+
     // Use d3 to select the panel with id of `#sample-metadata`
-  
+    var selector = d3.select("#sample-metadata").selectAll("dl");
+    
     // Use `.html("") to clear any existing metadata
+    selector.html("");
 
     // Use `Object.entries` to add each key and value pair to the panel
     // Hint: Inside the loop, you will need to use d3 to append new
     // tags for each key-value in the metadata.
+    
+
 
     // BONUS: Build the Gauge Chart
     // buildGauge(data.WFREQ);
@@ -45,7 +50,7 @@ function init() {
 
     // Use the first sample from the list to build the initial plots
     const firstSample = sampleNames[0];
-    buildCharts(firstSample);
+    // buildCharts(firstSample);
     buildMetadata(firstSample);
   });
 }
